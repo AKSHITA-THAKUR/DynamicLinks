@@ -16,7 +16,23 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": [
+            {
+              "scheme": "https",
+              "host": "example.com",  
+              "pathPrefix": "/product-detials"     
+            },
+            {
+              "scheme": "myapp"        
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -41,6 +57,20 @@
     "extra": {
       "router": {
         "origin": false
+      }, "expoRouter": {
+        "origin": "https://example.com",
+        "async": true,
+        "linking": {
+          "routes": {
+            "product-detials": {
+              "id": "productDetails",
+              "params": {
+                "id": "string",
+                "name": "string"
+              }
+            }
+          }
+        }
       },
       "eas": {
         "projectId": "764b70c7-550d-45e4-a296-2d4a0f785781"

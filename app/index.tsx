@@ -17,10 +17,25 @@ export default function Index() {
 
   return (
     <View className="flex-1 p-4">
-      <View className="items-center justify-center bg-gray-700 h-16 rounded-lg mb-4 flex-row gap-4">
-        <Text className="text-2xl text-white font-bold">My Shopping Hall</Text>
-        <Pressable onPress={()=> router.push("/Cart")} className="p-2 bg-blue-300"><Text>Cart {cart.length}</Text></Pressable>
-      </View>
+  <View 
+      style={{
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
+        alignItems: 'center',
+        paddingHorizontal: 20, 
+        paddingVertical: 15, 
+        backgroundColor: '#333', 
+      }}
+    >
+      <Text style={{ fontSize: 20, color: '#fff' }}>Aditya Store</Text>
+      <Pressable 
+        onPress={() => router.push('/Cart')} 
+        style={{ padding: 10, backgroundColor: '#4CAF50', borderRadius: 5 }}
+      >
+        <Text style={{ color: '#fff' }}>Cart ({cart.length})</Text>
+      </Pressable>
+    </View>
+
       <FlatList
         data={data}
         numColumns={2}
