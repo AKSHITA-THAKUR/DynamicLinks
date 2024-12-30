@@ -62,6 +62,9 @@ const ProductSlice = createSlice({
         }
       }
     },
+    
+    //Check out this product: Essence Mascara Lash Princess
+//exp://172.20.10.6:8081/--/product-details?id=1&name=Essence+Mascara+Lash+Princess
     removeFromCart:(state,action:PayloadAction<number>)=>{
       console.log("Remove from cart button is clicked")
        state.cart = state.cart.filter((product)=> product.id !== action.payload)
@@ -78,7 +81,7 @@ const ProductSlice = createSlice({
           ...products,
           quantity: 0,
         }));
-        // console.log(state.products)
+        console.log("The products are being fetched")
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.error = action.error.message;

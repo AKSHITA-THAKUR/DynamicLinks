@@ -9,32 +9,38 @@ import { useRouter } from "expo-router";
 export default function Index() {
   const dispatch: AppDispatch = useDispatch();
   const router = useRouter();
+
   const data = useSelector((state: RootState) => state.products.products);
   const cart = useSelector((state: RootState) => state.products.cart);
   useEffect(() => {
+    console.log("Dispatching fetchProducts");
     dispatch(fetchProducts());
   }, []);
-
+  if (!data || data.length === 0) {
+    return <Text>No products available.</Text>;
+  }
   return (
     <View className="flex-1 p-4">
-  <View 
-      style={{
-        flexDirection: 'row', 
-        justifyContent: 'space-between', 
-        alignItems: 'center',
-        paddingHorizontal: 20, 
-        paddingVertical: 15, 
-        backgroundColor: '#333', 
-      }}
-    >
-      <Text style={{ fontSize: 20, color: '#fff' }}>Aditya Store</Text>
-      <Pressable 
-        onPress={() => router.push('/Cart')} 
-        style={{ padding: 10, backgroundColor: '#4CAF50', borderRadius: 5 }}
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          paddingHorizontal: 20,
+          paddingVertical: 15,
+          backgroundColor: "#333",
+        }}
       >
-        <Text style={{ color: '#fff' }}>Cart ({cart.length})</Text>
-      </Pressable>
-    </View>
+        <Text style={{ fontSize: 20, color: "#fff" }}>
+          Akshita Thakur Store
+        </Text>
+        <Pressable
+          onPress={() => router.push("/Cart")}
+          style={{ padding: 10, backgroundColor: "#4CAF50", borderRadius: 5 }}
+        >
+          <Text style={{ color: "#fff" }}>Cart ({cart.length})</Text>
+        </Pressable>
+      </View>
 
       <FlatList
         data={data}
